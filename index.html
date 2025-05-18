@@ -1,1 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FLT4 - Using SELECT Clause</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="sakura-falling"></canvas>
+  <div class="sakura-animation"></div>
+  <main class="container">
+    <h1>Finals Lab Task 4 - Using SELECT Clause</h1>
+    <p>In this lab activity, I worked with the SELECT clause in MySQL to retrieve and analyze data from a table named <code>courses</code> in the <code>online_courseDB</code> database. This task focused on using <code>SELECT</code>, <code>WHERE</code>, <code>GROUP BY</code>, <code>ORDER BY</code>, and aggregate functions like <code>SUM()</code> to extract meaningful information from the dataset.</p>
 
+    <section>
+      <h2>Steps I Followed</h2>
+      <ul>
+        <li><strong>Created a new database:</strong>
+          <ul>
+            <li>Used <code>CREATE DATABASE online_courseDB</code> to make the database.</li>
+            <li>Used <code>USE online_courseDB</code> to select the database.</li>
+          </ul>
+        </li>
+        <li><strong>Performed SELECT operations:</strong>
+          <ul>
+            <li>Retrieved all courses where <code>students_enrolled</code> is less than <code>enrollment_limit</code> using the <code>WHERE</code> clause.</li>
+            <li>Grouped the courses by category and used <code>SUM(students_enrolled)</code> to get the total per category.</li>
+            <li>Selected courses that are fully enrolled using <code>WHERE students_enrolled = enrollment_limit</code>.</li>
+            <li>Used the <code>SUM()</code> function to get the total number of students enrolled across all courses.</li>
+            <li>Sorted the courses in ascending order by the number of students enrolled using <code>ORDER BY</code>.</li>
+          </ul>
+        </li>
+        <li><strong>Checked the output:</strong>
+          <ul>
+            <li>Used <code>SELECT</code> statements to display the correct output for each task.</li>
+            <li>Verified that the queries returned the correct data from the <code>courses</code> table.</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section class="screenshots">
+      <h2>Screenshot of my output for Task 1</h2>
+      <img src="images/task1.PNG" alt="Output Task 1" />
+
+      <h2>Screenshot of my output for Task 2</h2>
+      <img src="images/task2.PNG" alt="Output Task 2" />
+
+      <h2>Screenshot of my output for Task 3</h2>
+      <img src="images/task3.PNG" alt="Output Task 3" />
+
+      <h2>Screenshot of my output for Task 4</h2>
+      <img src="images/task4.PNG" alt="Output Task 4" />
+
+      <h2>Screenshot of my output for Task 5</h2>
+      <img src="images/task5.PNG" alt="Output Task 5" />
+    </section>
+  </main>
+
+  <!-- Sakura Falling Animation Script -->
+  <script src="https://cdn.jsdelivr.net/gh/lgarron/sakura/sakura.js"></script>
+  <script>
+    const sakura = new Sakura('body', {
+      colors: [
+        {
+          gradientColorStart: 'rgba(255, 183, 197, 0.9)',
+          gradientColorEnd: 'rgba(255, 197, 208, 0.9)',
+          gradientColorDegree: 120
+        }
+      ],
+      maxSize: 14,
+      minSize: 9,
+      fallSpeed: 1.2
+    });
+  </script>
+
+  <!-- Sakura Trail Animation -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const trail = document.createElement("div");
+      trail.className = "sakura-trail";
+      document.body.appendChild(trail);
+
+      document.addEventListener("mousemove", function(e) {
+        const petal = document.createElement("div");
+        petal.className = "sakura-petal";
+        petal.style.left = ${e.pageX}px;
+        petal.style.top = ${e.pageY}px;
+        document.body.appendChild(petal);
+        setTimeout(() => petal.remove(), 1000);
+      });
+    });
+  </script>
+
+  <!-- Background Music -->
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4c73b93344.mp3?filename=serene-view-14757.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+</body>
+</html>
